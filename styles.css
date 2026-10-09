@@ -1,0 +1,186 @@
+/* ---------- Base ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* ---------- Page layout ---------- */
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+}
+
+header { grid-area: header; }
+aside  { grid-area: sidebar; }
+main   { grid-area: main; }
+footer { grid-area: footer; }
+
+/* ---------- Header ---------- */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #3C8527;
+    color: #FFFFFF;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 39px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    margin: 0 0 10px;
+}
+
+header p {
+    margin: 0 0 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+}
+
+/* ---------- Sidebar ---------- */
+aside {
+    padding: 20px 15px;
+    border-right: 1px solid #ddd;
+}
+
+aside h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0 0 8px;
+}
+
+/* About section */
+.about {
+    background-color: #E2E8F0;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.about h3 {
+    color: #333322;
+}
+
+.about p {
+    margin: 0;
+}
+
+/* Social Media and Archives sections */
+.sidebar-section {
+    border-left: 3px solid #3C8527;
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+.sidebar-section h3 {
+    color: #28651C;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-section li {
+    margin-bottom: 4px;
+}
+
+aside a {
+    color: #2879B8;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+aside a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Main and Posts ---------- */
+main {
+    padding: 20px 25px;
+    min-width: 0;
+}
+
+article h3 {
+    font-size: 34px;
+    color: #28651C;
+    margin: 0 0 5px;
+}
+
+.post-meta {
+    color: #667267;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+.post-img {
+    width: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 2%;
+}
+
+.post-img.left  { float: left;  margin-right: 20px; }
+.post-img.right { float: right; margin-left: 10px; }
+
+/* Keeps each post wrapped around its floated image */
+article::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* Divider line between posts */
+article + article {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #28651C;
+    color: #FFFFFF;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Changes size depending on screen width */
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    aside {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+}
